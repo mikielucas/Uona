@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Welcome to the Simple Calculator!");
+
+        System.out.print("Enter the first number: ");
+        if (!input.hasNextDouble()) {
+            System.out.println("Error: You must enter a number.");
+            return;
+        }
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        if (!input.hasNextDouble()) {
+            System.out.println("Error: You must enter a number.");
+            return;
+        }
+        double num2 = input.nextDouble();
+
+        // Basic operations
+        System.out.println("Addition: " + (num1 + num2));
+        System.out.println("Subtraction: " + (num1 - num2));
+        System.out.println("Multiplication: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Division: " + (num1 / num2));
+        } else {
+            System.out.println("Division: Cannot divide by zero.");
+        }
+
+        // Square and square root
+        System.out.println("Square of first number: " + (num1 * num1));
+        System.out.println("Square of second number: " + (num2 * num2));
+
+        if (num1 >= 0) {
+            System.out.println("Square root of first number: " + Math.sqrt(num1));
+        } else {
+            System.out.println("Cannot find square root of a negative number (first number).");
+        }
+
+        if (num2 >= 0) {
+            System.out.println("Square root of second number: " + Math.sqrt(num2));
+        } else {
+            System.out.println("Cannot find square root of a negative number (second number).");
+        }
+
+        input.close();
+    }
+}

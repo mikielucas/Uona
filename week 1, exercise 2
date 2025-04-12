@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class FramingCostCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Ask user for picture size
+        System.out.println("Enter the length of the picture (in inches): ");
+        double length = input.nextDouble();
+
+        System.out.println("Enter the width of the picture (in inches): ");
+        double width = input.nextDouble();
+
+        // Ask user for frame type
+        System.out.println("Enter the type of frame (regular or fancy): ");
+        String frameType = input.next();
+
+        // Ask for color (we don't use it to calculate cost, just collect it)
+        System.out.println("Enter the color you want for the frame: ");
+        String color = input.next();
+
+        // Ask if user wants crowns
+        System.out.println("Do you want crowns? (yes or no): ");
+        String wantsCrowns = input.next();
+
+        int numberOfCrowns = 0;
+        if (wantsCrowns.equalsIgnoreCase("yes")) {
+            System.out.println("How many crowns do you want?: ");
+            numberOfCrowns = input.nextInt();
+        }
+
+        // Constants
+        double frameWidth = 2;
+        double coloringCostPerInch = 0.10;
+        double regularFrameCost = 0.20;
+        double fancyFrameCost = 0.30;
+        double cardboardCostPerInch = 0.05;
+        double glassCostPerInch = 0.10;
+        double crownCost = 0.35;
+
+        // Outer dimensions of the picture including the frame
+        double outerLength = length + 2 * frameWidth;
+        double outerWidth = width + 2 * frameWidth;
+
+        // Perimeter and area
+        double perimeter = 2 * (outerLength + outerWidth);
+        double area = outerLength * outerWidth;
+
+        // Frame cost
+        double frameCost;
+        if (frameType.equalsIgnoreCase("fancy")) {
+            frameCost = perimeter * fancyFrameCost;
+        } else {
+            frameCost = perimeter * regularFrameCost;
+        }
+
+        // Coloring cost
+        double coloringCost = perimeter * coloringCostPerInch;
+
+        // Cardboard and glass
+        double cardboardCost = area * cardboardCostPerInch;
+        double glassCost = area * glassCostPerInch;
+
+        // Crowns
+        double totalCrownCost = numberOfCrowns * crownCost;
+
+        // Total cost
+        double totalCost = frameCost + coloringCost + cardboardCost + glassCost + totalCrownCost;
+
+        // Print the result
+        System.out.println("The total cost to frame your picture is: $" + totalCost);
+
+        input.close();
+    }
+}

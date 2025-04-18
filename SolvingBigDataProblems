@@ -1,0 +1,57 @@
+import matplotlib.pyplot as plt
+
+# Plot survival rate by sex
+plt.figure(figsize=(6, 4))
+plt.bar(survival_by_sex["Sex"], survival_by_sex["Survived"], edgecolor='black')
+plt.title("Survival Rate by Gender")
+plt.ylabel("Survival Rate")
+plt.xlabel("Gender")
+plt.ylim(0, 1)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+
+# Plot survival rate by age group
+plt.figure(figsize=(8, 4))
+plt.bar(survival_by_age["AgeBin"].astype(str), survival_by_age["Survived"], edgecolor='black')
+plt.title("Survival Rate by Age Group")
+plt.ylabel("Survival Rate")
+plt.xlabel("Age Group")
+plt.ylim(0, 1)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+
+# Plot survival rate by passenger class
+plt.figure(figsize=(6, 4))
+plt.bar(survival_by_pclass["Pclass"].astype(str), survival_by_pclass["Survived"], edgecolor='black')
+plt.title("Survival Rate by Passenger Class")
+plt.ylabel("Survival Rate")
+plt.xlabel("Passenger Class")
+plt.ylim(0, 1)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+
+# Markdown cell content to summarize insights from the charts
+from IPython.display import Markdown
+
+analysis_text = """
+### 🔍 Titanic Survival Analysis: Insights from the Charts
+
+#### 1. **Survival Rate by Gender**
+- **Females had a 100% survival rate**, while **males had 0%** in this sample.
+- This reflects the historical evacuation policy of **"women and children first."**
+
+#### 2. **Survival Rate by Age Group**
+- **Children (0–12)** and **Seniors (51–80)** had the **highest survival rates**.
+- **Young Adults and Adults** had noticeably **lower survival rates**.
+- This may indicate prioritization of the very young and very old during evacuation.
+
+#### 3. **Survival Rate by Passenger Class**
+- **1st Class passengers** had the highest survival rate (~47%).
+- **2nd and 3rd Class** passengers had similar but lower survival rates (~32–33%).
+- Suggests **access to lifeboats and evacuation priority was skewed by class**, with 1st Class passengers having clear advantages.
+
+These charts paint a clear picture: **gender, age, and class were all critical factors** in determining who survived the Titanic disaster.
+"""
+
+Markdown(analysis_text)
+
